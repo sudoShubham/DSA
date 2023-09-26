@@ -82,6 +82,213 @@ void inverted_pyramid()
     }
 }
 
+void pyramid(int n)
+{
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < n - row - 1; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < row + 1; col++)
+        {
+            cout << "* ";
+        }
+        cout << "\n";
+    }
+}
+
+void pyramid_2(int n)
+{
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < row; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < n - row; col++)
+        {
+            cout << "* ";
+        }
+        cout << "\n";
+    }
+}
+
+void full_pyramid(int n)
+{
+    pyramid(n / 2);
+    pyramid_2(n / 2);
+}
+
+void empty_pyramid(int n)
+{
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < n - row - 1; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < row + 1; col++)
+            if (col == 0 || col == row + 1 - 1)
+            {
+                cout << "* ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        cout << "\n";
+    }
+}
+
+void empty_pyramid_2(int n)
+{
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < row; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < n - row; col++)
+            if (col == 0 || col == n - row - 1)
+            {
+                cout << "* ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        cout << "\n";
+    }
+}
+
+void diamond()
+{
+    int n = 4;
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < n - row; col++)
+        {
+            cout << "*";
+        }
+        for (int col = 0; col < 2 * row + 1; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < n - row; col++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < row + 1; col++)
+        {
+            cout << "*";
+        }
+        for (int col = 0; col < 2 * n - 2 * row - 1; col++)
+        {
+            cout << " ";
+        }
+        for (int col = 0; col < row + 1; col++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}
+
+void pattern()
+{
+    int n = 4;
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < row * 2 + 1; col++)
+        {
+            if (col % 2 == 0)
+            {
+                cout << row + 1 << " ";
+            }
+            else
+            {
+                cout << "* ";
+            }
+        }
+        cout << endl;
+    }
+    n = 4;
+    for (int row = n - 1; row > 0; row--)
+    {
+        for (int col = 0; col < row; col++)
+            if (col == row - 1)
+            {
+                cout << row;
+            }
+            else
+            {
+                cout << row << " * ";
+            }
+        cout << endl;
+    }
+}
+
+void hollow_inverted_pyramid()
+{
+    int n = 8;
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < n - row; col++)
+        {
+            if (row == 0)
+            {
+                cout << "* ";
+            }
+            else if (col == 0)
+            {
+                cout << "* ";
+            }
+            else if (row + col == n - 1)
+            {
+                cout << "* ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+void hollow_number_pyramid()
+{
+    int n = 8;
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < row + 1; col++)
+
+            if (row == n - 1)
+            {
+                cout << col + 1 << " ";
+            }
+            else if (col == 0)
+            {
+                cout << "1 ";
+            }
+            else if (col == row)
+            {
+                cout << row + 1 << "  ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        cout << endl;
+    }
+}
+
 int main()
 {
     cout << "SQUARE \n";
@@ -94,4 +301,25 @@ int main()
     half_pyramid();
     cout << "\ninverted_PYRAMID\n";
     inverted_pyramid();
+    cout << "\nPYRAMID\n";
+    pyramid(8);
+    cout << "\nPYRAMID_2\n";
+    pyramid_2(8);
+    cout << "\nFULL-PYRAMID_2\n";
+    full_pyramid(16);
+    cout << "\nEMPTY-PYRAMID\n";
+    empty_pyramid(8);
+    cout << "\nEMPTY-PYRAMID_2\n";
+    empty_pyramid_2(8);
+    cout << "\nEMPTY_DIAMOND\n";
+    empty_pyramid(8);
+    empty_pyramid_2(8);
+    cout << "\nDIAMOND\n";
+    diamond();
+    cout << "\nPattern\n";
+    pattern();
+    cout << "\nHOLLOW INVERTED PYRAMID\n";
+    hollow_inverted_pyramid();
+    cout << "\nHOLLOW NUMBER PYRAMID\n";
+    hollow_number_pyramid();
 }
